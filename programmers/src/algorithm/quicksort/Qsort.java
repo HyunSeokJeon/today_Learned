@@ -13,12 +13,11 @@ public class Qsort {
 	
 	
 	
-	public List<Integer> accumlate(List<Integer> list){
+	public List<Integer> Quicksort(List<Integer> list){
 		if (list.size() <= 1) {
 			return list;
 		}
 		int a = list.get(0);
-		list.remove(0);
 		List<Integer> left = list.stream()
 								.filter(i -> i < a)
 								.collect(Collectors.toList());
@@ -26,7 +25,14 @@ public class Qsort {
 		List<Integer> right = list.stream()
 								.filter(i -> i > a)
 								.collect(Collectors.toList());
-		return this.list;
+		
+		List<Integer> sortedList = new ArrayList<Integer>();
+		sortedList.addAll(Quicksort(left));
+		sortedList.add(a);
+		sortedList.addAll(Quicksort(right));
+		
+		
+		return sortedList;
 	}
 	
 	
